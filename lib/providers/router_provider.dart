@@ -1,5 +1,6 @@
 import 'package:auth_riverpod_gorouter/providers/login_controller_provider.dart';
 import 'package:auth_riverpod_gorouter/providers/states/login_states.dart';
+import 'package:auth_riverpod_gorouter/ui/about_screen.dart';
 import 'package:auth_riverpod_gorouter/ui/home_screen.dart';
 import 'package:auth_riverpod_gorouter/ui/login_screen.dart';
 import 'package:flutter/material.dart';
@@ -34,7 +35,7 @@ class RouterNotifier extends ChangeNotifier {
       return areWeLoggingIn ? null : '/login';
     }
 
-    if (areWeLoggingIn) return '/';
+    if (areWeLoggingIn) return '/home';
 
     return null;
   }
@@ -48,7 +49,12 @@ class RouterNotifier extends ChangeNotifier {
         GoRoute(
           name: 'home',
           builder: (context, state) => const HomeScreen(),
-          path: '/',
+          path: '/home',
+        ),
+        GoRoute(
+          name: 'about',
+          builder: (context, state) => const AboutScreen(),
+          path: '/about',
         ),
       ];
 }
